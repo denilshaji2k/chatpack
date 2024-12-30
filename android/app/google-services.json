@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "97808656244",
+    "project_id": "chatpack-2024",
+    "storage_bucket": "chatpack-2024.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:97808656244:android:f9aeb301b469799a04ae21",
+        "android_client_info": {
+          "package_name": "com.example.chatpack"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDMzxu82G-Ca5JpmVcgL1-V2C3TgJ7urn4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

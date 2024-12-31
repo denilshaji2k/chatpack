@@ -1,61 +1,3 @@
-// import 'dart:developer';
-
-// import 'package:firebase_auth/firebase_auth.dart';
-// import 'package:flutter/material.dart';
-// import 'package:get_it/get_it.dart';
-
-// import '../services/database_service.dart';
-// import '../services/navigation_service.dart';
-// import '../models/chat_user.dart';
-
-// class AuthenticationProvider extends ChangeNotifier {
-//   late final FirebaseAuth auth;
-//   late final DatabaseService databaseService;
-//   late final NavigationService navigationService;
-//   late ChatUser users;
-
-//   AuthenticationProvider() {
-//     auth = FirebaseAuth.instance;
-//     databaseService = GetIt.instance<DatabaseService>();
-//     navigationService = GetIt.instance<NavigationService>();
-
-//     auth.authStateChanges().listen((User? user) {
-//       if (user == null) {
-//         log('User is currently signed out!');
-//       } else {
-//         databaseService.updateUserLastSeenTime(user.uid);
-//         databaseService.getUser(user.uid).then((snapshot) {
-//           Map<String, dynamic> userData =
-//               snapshot.data()! as Map<String, dynamic>;
-//           users = ChatUser.fromJson(
-//             {
-//               "uid": user.uid,
-//               "email": userData["email"],
-//               "name": userData["name"],
-//               "image": userData["imageUrl"],
-//               "lastActive": userData["lastActive"],
-//             },
-//           );
-//           print(users.toMap());
-
-//         },
-//         );
-//       }
-//     });
-//   }
-
-//   Future<void> loginUsingEmailAndPassword(String email, String password) async {
-//     try {
-//       await auth.signInWithEmailAndPassword(email: email, password: password);
-//       print(auth.currentUser);
-//     } on FirebaseAuthException {
-//       print("Error logging into firebase");
-//     } catch (e) {
-//       print(e);
-//     }
-//   }
-// }
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
@@ -144,3 +86,88 @@ class AuthenticationProvider extends ChangeNotifier {
     }
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// import 'dart:developer';
+
+// import 'package:firebase_auth/firebase_auth.dart';
+// import 'package:flutter/material.dart';
+// import 'package:get_it/get_it.dart';
+
+// import '../services/database_service.dart';
+// import '../services/navigation_service.dart';
+// import '../models/chat_user.dart';
+
+// class AuthenticationProvider extends ChangeNotifier {
+//   late final FirebaseAuth auth;
+//   late final DatabaseService databaseService;
+//   late final NavigationService navigationService;
+//   late ChatUser users;
+
+//   AuthenticationProvider() {
+//     auth = FirebaseAuth.instance;
+//     databaseService = GetIt.instance<DatabaseService>();
+//     navigationService = GetIt.instance<NavigationService>();
+
+//     auth.authStateChanges().listen((User? user) {
+//       if (user == null) {
+//         log('User is currently signed out!');
+//       } else {
+//         databaseService.updateUserLastSeenTime(user.uid);
+//         databaseService.getUser(user.uid).then((snapshot) {
+//           Map<String, dynamic> userData =
+//               snapshot.data()! as Map<String, dynamic>;
+//           users = ChatUser.fromJson(
+//             {
+//               "uid": user.uid,
+//               "email": userData["email"],
+//               "name": userData["name"],
+//               "image": userData["imageUrl"],
+//               "lastActive": userData["lastActive"],
+//             },
+//           );
+//           print(users.toMap());
+
+//         },
+//         );
+//       }
+//     });
+//   }
+
+//   Future<void> loginUsingEmailAndPassword(String email, String password) async {
+//     try {
+//       await auth.signInWithEmailAndPassword(email: email, password: password);
+//       print(auth.currentUser);
+//     } on FirebaseAuthException {
+//       print("Error logging into firebase");
+//     } catch (e) {
+//       print(e);
+//     }
+//   }
+// }

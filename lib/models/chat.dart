@@ -28,7 +28,7 @@ class Chat {
 
   String title() {
     return !group
-        ? recepients.first.getDisplayName()
+        ? recepients.isEmpty ? "No name":  recepients.first.getDisplayName()
         : recepients.map((user) => user.getDisplayName()).join(", ");
   }
 

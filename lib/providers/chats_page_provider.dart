@@ -120,6 +120,28 @@ class ChatsPageProvider extends ChangeNotifier {
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //   void getChats() async {
 //     try {
 //       chatsStream =

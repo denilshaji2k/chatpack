@@ -1,18 +1,14 @@
-//Packages
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-//Providers
 import '../providers/authentication_provider.dart';
 import '../providers/users_page_provider.dart';
 
-//Widgets
 import '../widgets/top_bar.dart';
 import '../widgets/custom_input_fields.dart';
 import '../widgets/custom_list_view_tiles.dart';
 import '../widgets/rounded_button.dart';
 
-//Models
 import '../models/chat_user.dart';
 
 class UsersPage extends StatefulWidget {
@@ -64,7 +60,7 @@ class UsersPageState extends State<UsersPage> {
               TopBar(
                 'Users',
                 primaryAction: IconButton(
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.logout,
                     color: Color.fromRGBO(0, 82, 218, 1.0),
                   ),

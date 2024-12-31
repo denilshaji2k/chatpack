@@ -1,17 +1,13 @@
-//Packages
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-//Widgets
 import '../widgets/top_bar.dart';
 import '../widgets/custom_list_view_tiles.dart';
 import '../widgets/custom_input_fields.dart';
 
-//Models
 import '../models/chat.dart';
 import '../models/chat_message.dart';
 
-//Providers
 import '../providers/authentication_provider.dart';
 import '../providers/chat_page_provider.dart';
 

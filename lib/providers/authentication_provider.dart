@@ -74,7 +74,7 @@ class AuthenticationProvider extends ChangeNotifier {
     auth = FirebaseAuth.instance;
     databaseService = GetIt.instance<DatabaseService>();
     navigationService = GetIt.instance<NavigationService>();
-    // auth.signOut();
+    auth.signOut();
 
     auth.authStateChanges().listen((User? user) {
       if (user == null) {
@@ -90,9 +90,9 @@ class AuthenticationProvider extends ChangeNotifier {
                 "email": userData["email"],
                 "name": userData["name"],
                 "image": userData["imageUrl"],
-                "lastActive": userData["lastActive"]
-                    .toDate()
-                    .toIso8601String(), // Convert Timestamp to String
+                "lastActive": userData["lastActive"] != null
+                    ? userData["lastActive"].toDate().toIso8601String()
+                    : DateTime.now().toIso8601String(), // Convert Timestamp to String
               },
             );
             navigationService.removeAndNavigateToRoute('/home');
@@ -129,11 +129,18 @@ class AuthenticationProvider extends ChangeNotifier {
     return null;
   }
 
-  Future<void> logOut() async {
-   try {
+  Future<bool> logOut() async {
+    try {
       await auth.signOut();
+      // Clear any cached user data if needed
+      // notifyListeners(); // If using ChangeNotifier
+      return true;
+    } on FirebaseAuthException catch (e) {
+      print('Firebase logout error: ${e.code} - ${e.message}');
+      return false;
     } catch (e) {
-      print(e);
+      print('Unexpected error during logout: $e');
+      return false;
     }
   }
 }

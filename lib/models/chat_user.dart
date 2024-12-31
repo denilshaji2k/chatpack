@@ -46,6 +46,8 @@
 //   }
 // }
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 class ChatUser {
   final String uid;
   final String email;
@@ -73,11 +75,25 @@ class ChatUser {
 
   factory ChatUser.fromJson(Map<String, dynamic> json) {
     return ChatUser(
-      uid: json['uid'],
-      email: json['email'],
-      name: json['name'],
-      image: json['image'],
-      lastActive: json['lastActive'], // Assuming lastActive is already a String
+      uid: json['uid'] ?? '',
+      email: json['email'] ?? '',
+      name: json['name'] ?? '',
+      image: json['image'] ?? '',
+      lastActive: json['lastActive'] is Timestamp
+          ? (json['lastActive'] as Timestamp).toDate().toIso8601String()
+          : json['lastActive'] ?? DateTime.now().toIso8601String(),
     );
+  }
+
+ 
+
+  String lastDayActive() {
+    DateTime parsedDate = DateTime.parse(lastActive);
+    return "${parsedDate.month}/${parsedDate.day}/${parsedDate.year}";
+  }
+
+  bool wasRecentlyActive() {
+    DateTime parsedDate = DateTime.parse(lastActive);
+    return DateTime.now().difference(parsedDate).inHours < 2;
   }
 }

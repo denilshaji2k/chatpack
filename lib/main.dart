@@ -29,6 +29,8 @@ class MainApp extends StatelessWidget {
         ChangeNotifierProvider<AuthenticationProvider>(create: (BuildContext context) => AuthenticationProvider()),
       ],
       child: MaterialApp(
+                debugShowCheckedModeBanner: false,
+
         title: 'ChatPack Messenger',
         theme: ThemeData.dark().copyWith(
           scaffoldBackgroundColor: const Color.fromARGB(255, 49, 45, 110),

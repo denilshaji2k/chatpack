@@ -28,8 +28,8 @@ class Chat {
 
   String title() {
     return !group
-        ? recepients.isNotEmpty ? recepients.first.name : "No recipient"
-        : recepients.map((user) => user.name).join(", ");
+        ? recepients.first.getDisplayName()
+        : recepients.map((user) => user.getDisplayName()).join(", ");
   }
 
   String imageURL() {

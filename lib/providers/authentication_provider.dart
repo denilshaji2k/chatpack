@@ -129,11 +129,11 @@ class AuthenticationProvider extends ChangeNotifier {
     return null;
   }
 
-  Future<bool> logOut() async {
+   Future<bool> logOut() async {
     try {
       await auth.signOut();
-      // Clear any cached user data if needed
-      // notifyListeners(); // If using ChangeNotifier
+      navigationService.removeAndNavigateToRoute('/login');
+      notifyListeners();
       return true;
     } on FirebaseAuthException catch (e) {
       print('Firebase logout error: ${e.code} - ${e.message}');

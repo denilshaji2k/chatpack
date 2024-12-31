@@ -63,6 +63,10 @@ class ChatUser {
     required this.lastActive, // Updated to String
   });
 
+  String getDisplayName() {
+    return name.isNotEmpty ? name : email.split('@')[0];
+  }
+
   Map<String, dynamic> toMap() {
     return {
       'uid': uid,
@@ -74,18 +78,24 @@ class ChatUser {
   }
 
   factory ChatUser.fromJson(Map<String, dynamic> json) {
+    String processName(dynamic nameValue, String email) {
+      if (nameValue is String && nameValue.isNotEmpty) {
+        return nameValue;
+      }
+      return email.split('@')[0]; // Fallback to email username
+    }
+
+    final email = json['email'] ?? '';
     return ChatUser(
       uid: json['uid'] ?? '',
-      email: json['email'] ?? '',
-      name: json['name'] ?? '',
+      email: email,
+      name: processName(json['name'], email),
       image: json['image'] ?? '',
       lastActive: json['lastActive'] is Timestamp
           ? (json['lastActive'] as Timestamp).toDate().toIso8601String()
           : json['lastActive'] ?? DateTime.now().toIso8601String(),
     );
   }
-
- 
 
   String lastDayActive() {
     DateTime parsedDate = DateTime.parse(lastActive);

@@ -27,8 +27,9 @@ class TopBar extends StatelessWidget {
         mainAxisSize: MainAxisSize.max,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
+          
           if (secondaryAction != null) secondaryAction!,
-          titleBar(),
+          Expanded(child: titleBar()),
           if (primaryAction != null) primaryAction!,
         ],
       ),
@@ -36,13 +37,16 @@ class TopBar extends StatelessWidget {
   }
 
   Widget titleBar() {
-    return Text(
-      barTitle,
-      overflow: TextOverflow.ellipsis,
-      style: TextStyle(
-        color: Colors.white,
-        fontSize: fontSize ?? 16.0, // Default font size
-        fontWeight: FontWeight.w700,
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      child: Text(
+        barTitle,
+        overflow: TextOverflow.ellipsis,
+        style: TextStyle(
+          color: Colors.white,
+          fontSize: fontSize ?? 16.0, // Default font size
+          fontWeight: FontWeight.w700,
+        ),
       ),
     );
   }
